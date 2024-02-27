@@ -1,0 +1,27 @@
+#include <Servo.h>
+
+// Define servo objects
+Servo servo1;
+Servo servo2;
+
+// Define potentiometer pins
+const int potPin1 = A0;
+const int potPin2 = A1;
+
+void setup() {
+  // Attach servo objects to corresponding pins
+  servo1.attach(9);
+  servo2.attach(10);
+}
+
+void loop() {
+  // Read potentiometer values
+  int angle1 = map(analogRead(potPin1), 0, 1023, 0, 180);
+  int angle2 = map(analogRead(potPin2), 0, 1023, 0, 180);
+  
+  // Move servos to desired angles
+  servo1.write(angle1);
+  servo2.write(angle2);
+  
+  delay(20); // Adjust delay as needed for smooth motion
+}
